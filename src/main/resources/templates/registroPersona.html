@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Getechnologies MX</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <div class="row col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header">
+          <h2 class="text-center">Registro de personas</h2>
+      </div>
+      <div th:if="${param.success}">
+          <div class="alert alert-info">
+            La persona ha sido registrada correctamente !
+          </div>
+      </div>
+      <div class="card-body">
+       <form
+            method="post"
+            role="form"
+            th:action="@{/registroPersona/save}"
+            th:object="${persona}"
+          >
+      <div class="form-group mb-3">
+              <label class="form-label">Nombre</label>
+              <input
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      placeholder="Ingresa el nombre"
+                      th:field="*{name}"
+                      type="text"
+              />
+              <p th:errors = "*{name}" class="text-danger"
+              th:if="${#fields.hasErrors('name')}"></p>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label">Apellido Paterno</label>
+              <input
+                      class="form-control"
+                      id="middleName"
+                      name="middleName"
+                      placeholder="Ingresa el apellido paterno"
+                      th:field="*{middleName}"
+                      type="text"
+              />
+              <p th:errors = "*{middleName}" class="text-danger"
+                 th:if="${#fields.hasErrors('middleName')}"></p>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label">Apellido Materno</label>
+              <input
+                      class="form-control"
+                      id="lastName"
+                      name="lastName"
+                      placeholder="Ingresa el apellido paterno"
+                      th:field="*{lastName}"
+                      type="text"
+              />
+              <p th:errors = "*{lastName}" class="text-danger"
+                 th:if="${#fields.hasErrors('lastName')}"></p>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label">Identificacion</label>
+              <input
+                      class="form-control"
+                      id="identification"
+                      name="identification"
+                      placeholder="Ingresa el cargo"
+                      th:field="*{identification}"
+                      type="text"
+              />
+              <p th:errors = "*{identification}" class="text-danger"
+                 th:if="${#fields.hasErrors('identification')}"></p>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" >Enviar</button>
+              
+            </div>
+      </form>
+      </div>
+      </div>
+      </div>
+</div>
+</body>
+</html>
